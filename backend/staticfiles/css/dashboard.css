@@ -1,0 +1,120 @@
+/* Reset beberapa gaya default */
+body, h1, h2, ul, li, form {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f4f7fc;
+  color: #333;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #34495e;
+  margin-top: 20px;
+}
+
+form {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+form input, form textarea, form button {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+form button {
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+form button:hover {
+  background-color: #2980b9;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+li a {
+  text-decoration: none;
+  color: #3498db;
+  margin-left: 10px;
+}
+
+li a:hover {
+  text-decoration: underline;
+}
+
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Tambahkan gaya untuk halaman edit */
+.edit-page {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.edit-page h2 {
+  margin-bottom: 10px;
+}
+
+.edit-page form {
+  background-color: #fafafa;
+  padding: 15px;
+  box-shadow: none;
+  border-radius: 5px;
+}
+
+.edit-page form input,
+.edit-page form textarea,
+.edit-page form button {
+  width: auto;
+  margin-bottom: 12px;
+  padding: 10px;
+}
+
+.edit-page .form-group {
+  margin-bottom: 15px;
+}
+
+@media (max-width: 600px) {
+  .content {
+      padding: 10px;
+  }
+
+  form button {
+      padding: 10px;
+  }
+}

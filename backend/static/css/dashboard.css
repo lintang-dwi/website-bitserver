@@ -1,0 +1,165 @@
+/* Reset beberapa gaya default */
+body, h1, h2, ul, li, form {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #e9eff6;  /* Warna latar belakang lebih terang */
+  color: #333;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #34495e;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+form {
+  background-color: #ffffff;  /* Warna putih bersih */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);  /* Shadow lebih lembut */
+  padding: 20px;
+  margin-bottom: 30px;
+  width: 100%;
+  box-sizing: border-box;  /* Menjaga lebar elemen tidak melebihi box */
+}
+
+form input, form textarea, form button {
+  width: 100%;  /* Memastikan lebar elemen sesuai dengan lebar form */
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  box-sizing: border-box;  /* Menjaga padding tetap di dalam lebar elemen */
+}
+
+form button {
+  background-color: #5ab3f5;  /* Warna tombol lebih cerah */
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+form button:hover {
+  background-color: #4a9cd7;  /* Hover lebih gelap */
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  background-color: #ffffff;  /* Warna item tetap putih */
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);  /* Shadow lebih lembut */
+}
+
+li a {
+  text-decoration: none;
+  color: #3498db;
+  margin-left: 10px;
+}
+
+li a:hover {
+  text-decoration: underline;
+}
+
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Pengaturan layout halaman edit */
+.edit-page {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+}
+
+.edit-page h2 {
+  margin-bottom: 10px;
+}
+
+.edit-page form {
+  background-color: #f7fafd;  /* Warna latar belakang form lebih terang */
+  padding: 20px;
+  box-shadow: none;
+  border-radius: 5px;
+}
+
+.edit-page form input,
+.edit-page form textarea,
+.edit-page form button {
+  width: auto;
+  margin-bottom: 12px;
+  padding: 10px;
+}
+
+.edit-page .form-group {
+  margin-bottom: 15px;
+}
+
+@media (max-width: 600px) {
+  .content {
+      padding: 10px;
+  }
+
+  form button {
+      padding: 10px;
+  }
+  
+  form input, form textarea, form button {
+    padding: 10px;
+  }
+}
+
+/* Gambar produk dan post */
+.product-image, .post-image {
+  width: 150px;  /* Lebar gambar */
+  height: 150px; /* Tinggi gambar */
+  object-fit: cover; /* Menjaga gambar tetap proporsional dan terpotong dengan baik */
+  margin-right: 15px;
+}
+
+.product-item, .post-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.product-details, .post-details {
+  flex-grow: 1;
+}
+
+.actions {
+  margin-left: 10px;
+}
+
+.actions a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.actions a:hover {
+  text-decoration: underline;
+}
