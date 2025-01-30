@@ -1,11 +1,9 @@
 from rest_framework import viewsets
-from .models import Product, Post
-from .serializers import ProductSerializer, PostSerializer
-from django.shortcuts import render, redirect
-from .forms import ProductForm, PostForm
-
+from django.http import JsonResponse
+from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product, Post
+from .serializers import ProductSerializer, PostSerializer
 from .forms import ProductForm, PostForm
 
 
@@ -13,12 +11,21 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
+
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
 
-## View untuk dashboard
+# 🔥 Perbaikan API root agar tidak mengarah ke 127.0.0.1
+def api_root(request):
+    return JsonResponse({
+        "products": request.build_absolute_uri(reverse('product-list')),
+        "posts": request.build_absolute_uri(reverse('post-list'))
+    })
+
+
+# View untuk dashboard
 def dashboard(request):
     products = Product.objects.all()  # Mengambil semua produk
     posts = Post.objects.all()  # Mengambil semua post
@@ -45,6 +52,7 @@ def dashboard(request):
         'posts': posts,
     })
 
+
 # Edit Product
 def edit_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
@@ -57,6 +65,7 @@ def edit_product(request, product_id):
         product_form = ProductForm(instance=product)
 
     return render(request, 'dashboard/edit_product.html', {'product_form': product_form, 'product': product})
+
 
 # Edit Post
 def edit_post(request, post_id):
@@ -71,11 +80,13 @@ def edit_post(request, post_id):
 
     return render(request, 'dashboard/edit_post.html', {'post_form': post_form, 'post': post})
 
+
 # Delete Product
 def delete_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     product.delete()
     return redirect('dashboard')
+
 
 # Delete Post
 def delete_post(request, post_id):

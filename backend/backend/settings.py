@@ -58,6 +58,7 @@ DATABASES = {
 }
 
 MIDDLEWARE = [
+  'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -65,7 +66,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-     'corsheaders.middleware.CorsMiddleware',
+     
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -148,13 +149,15 @@ CORS_ALLOWED_ORIGINS = [
     "https://api.bitserver.cloud",
 ]
 
-# Menentukan URL dasar untuk file statis
+# ✅ STATIC FILES
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Lokasi file statis setelah collectstatic
 
-# Menentukan folder tujuan untuk file statis yang dikumpulkan
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # Ini adalah folder tempat file statis akan dikumpulkan
-
-# Menambahkan folder 'static' untuk dicari file statis selama pengembangan
+# ✅ Pastikan Django bisa mencari file statis di folder 'static'
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',  # Folder static di root proyek
+    os.path.join(BASE_DIR, 'static'),  # Pastikan folder ini ada
 ]
+
+# ✅ MEDIA FILES (Upload Gambar)
+MEDIA_URL = '/media/'  # URL untuk akses media
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Lokasi penyimpanan file media
