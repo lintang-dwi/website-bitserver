@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-sa(%^8!#_%=+k@dt#3@z*fu1m07^=(fg_7l7t=n%tcl4_h$ux+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['api.bitserver.cloud', '127.0.0.1', 'localhost']
+
 
 
 # Application definition
@@ -39,19 +40,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'dashboard',
+    'corsheaders',
 ]
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'websitebitserver',  # Ganti dengan nama database yang ingin digunakan
-        'USER': 'django_user',  # Ganti dengan username MySQL
-        'PASSWORD': 'password123',  # Ganti dengan password MySQL
-        'HOST': 'localhost',  # Ganti jika menggunakan host selain localhost
-        'PORT': '3306',  # Port default MySQL adalah 3306
+        'NAME': 'bitserver',  # Ganti dengan nama database yang ingin digunakan
+        'USER': 'bitserver',  # Ganti dengan username MySQL
+        'PASSWORD': 'WGHB4RPt4bs6W3N2',  # Ganti dengan password MySQL
+        'HOST': '127.0.0.1',  # Ganti jika menggunakan host selain localhost
+        'PORT': '3306', 
+        'OPTIONS': {
+            'unix_socket': '/var/run/mysqld/mysqld.sock',  # Sesuaikan dengan lokasi socket
+        },# Port default MySQL adalah 3306
     }
 }
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -61,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -139,7 +144,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Lokasi di server tempat file med
 
 
 
-
+CORS_ALLOWED_ORIGINS = [
+    "https://api.bitserver.cloud",
+]
 
 # Menentukan URL dasar untuk file statis
 STATIC_URL = '/static/'
